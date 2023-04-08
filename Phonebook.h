@@ -1,10 +1,11 @@
 #ifndef PHONEBOOK_H
 #define PHONEBOOK_H
 
-#include "Manager.h"
+#include "Constants.h"
 #include "IData.h"
+#include <string>
 
-class Phonebook : IData
+class Phonebook : public IData
 {
 public:
 	Phonebook();
@@ -15,6 +16,7 @@ public:
 	Phonebook& operator=(const Phonebook& other);
 	Phonebook& operator=(Phonebook&& other) noexcept;
 
+	int GetId() const;
 	bool GetIsDeleted() const;
 	std::string GetName() const;
 	std::string GetTelNumber() const;
@@ -24,6 +26,7 @@ public:
 	std::string GetEmail() const;
 	std::string GetOrganization() const;
 
+	void SetId(const int id);
 	void SetIsDeleted(const bool isDeleted);
 	void SetName(const std::string& name);
 	void SetTelNumber(const std::string& telNumber);
@@ -34,6 +37,7 @@ public:
 	void SetOrganization(const std::string& organization);
 
 private:
+	int mId;
 	bool mIsDeleted;
 
 	std::string mName;

@@ -68,7 +68,6 @@ void CallDecoder::DecodeData(Call& objectOutput, const int nextItemOffset)
 
 		// Convert to GMT
 		std::tm* timeInfo = std::gmtime(&timeStamp);
-		std::tm timeInfoNew;
 
 		// Format the date and time as a string
 		const char* format = "%d-%b-%y %H:%M:%S %p";

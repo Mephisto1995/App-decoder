@@ -1,23 +1,17 @@
 #ifndef DATA_CONTROL_H
 #define DATA_CONTROL_H
 
-#include "Call.h"
-#include "Phonebook.h"
+#include <memory>
+#include "IData.h"
 
 class DataControl
 {
 public:
 	DataControl();
-
-	void AddCallData(const Call& call);
-	void AddPhonebookData(const Phonebook& phonebook);
-
-	Phonebook& GetPhonebookAt(const int index);
-	const int GetPhonebookSize() const;
+	void AddDataEntry(const std::shared_ptr<IData>& data);
 
 private:
-	std::list<Call> mCallData;
-	std::vector<Phonebook> mPhonebookData;
+	std::vector<std::shared_ptr<IData>> mDataEntry;
 };
 
 #endif // !DATA_CONTROL_H

@@ -1,8 +1,10 @@
 #ifndef CALL_H
 #define CALL_H
 
-#include "Manager.h"
+#include "Constants.h"
+#include "Enums.h";
 #include "IData.h"
+#include <string>
 
 class Call : public IData
 {
@@ -15,14 +17,16 @@ public:
 	Call& operator=(const Call& other);
 	Call& operator=(Call&& other) noexcept;
 
-	Utils::Enums::ECallType GetCallType() const;
+	int GetId() const;
+	Enums::ECallType GetCallType() const;
 	std::string GetTelFrom() const;
 	std::string GetTelTo() const;
 	std::string GetSim() const;
 	std::string GetDateInfoData() const;
 	std::string GetDuration() const;
 
-	void SetCallType(const Utils::Enums::ECallType callType);
+	void SetId(const int id);
+	void SetCallType(const Enums::ECallType callType);
 	void SetTelFrom(const std::string& telFrom);
 	void SetTelTo(const std::string& telTo);
 	void SetSim(const std::string& sim);
@@ -30,7 +34,8 @@ public:
 	void SetDuration(const std::string& duration);
 
 private:
-	Utils::Enums::ECallType mCallType;
+	int mId;
+	Enums::ECallType mCallType;
 	std::string mTelFrom;
 	std::string mTelTo;
 	std::string mSim;

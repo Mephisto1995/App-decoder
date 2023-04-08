@@ -39,6 +39,21 @@
     <ClCompile Include="Manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataExtraction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SanitizeManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CallDataExtraction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhonebookMainDataExtraction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhonebookDetailsDataExtraction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Calls.bin">
@@ -76,7 +91,28 @@
     <ClInclude Include="IData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IDecoding.h">
+    <ClInclude Include="IDataExtraction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataExtraction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SanitizeManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CallDataExtraction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PhonebookMainDataExtraction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PhonebookDetailsDataExtraction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

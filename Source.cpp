@@ -1,16 +1,11 @@
 #include "Manager.h"
 
-#include "Call.h";
-#include "Phonebook.h"
-
-#include "CallDecoder.h";
-#include "PhonebookMainDecoder.h";
-#include "PhonebookDetailsDecoder.h";
-#include "DataControl.h"
-
-#pragma warning(disable:4996)
-
 void main()
+{
+    Utils::Helpers::HelperClass::InitApp();
+}
+
+/*void main()
 {
     std::string callsFilePath = "Resources/Calls.bin";
     std::string phonebookMainPath = "Resources/Phonebook_Main.bin";
@@ -95,4 +90,4 @@ void main()
     }
 
     fileManager.close();
-}
+}*/

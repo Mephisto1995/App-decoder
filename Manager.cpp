@@ -4,80 +4,97 @@ namespace Utils
 {
 	namespace Helpers
 	{
-		bool HelperClass::AreAllCharactersDigits(const char* buffer, const int bufferSize)
+		int HelperClass::GenerateRandomIds()
 		{
-			bool areAllDigits = true;
+			std::srand(std::time(nullptr));
+			return std::rand();
+		}
 
-			for (int i = 0; i < bufferSize; ++i)
+		void HelperClass::InitApp()
+		{
+			DataControl dataControl;
+
+			FileIterationHelper::IterateCallsFile(dataControl);
+			FileIterationHelper::IteratePhonebookFiles(dataControl);
+		}
+
+		void FileIterationHelper::IterateCallsFile(DataControl& dataControl)
+		{
+			std::ifstream fileManager(Constants::FilePaths::FILE_PATH_CALLS, std::ios::in | std::ios::binary);
+			std::unique_ptr<IDataExtraction> dataExtraction = std::make_unique<CallDataExtraction>(Constants::FilePaths::FILE_PATH_CALLS);
+			int indexOffset = 0;
+
+			if (!fileManager.is_open())
 			{
-				if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING && buffer[i] != Utils::Constants::Decoding::Tokens::SPACE_TOKEN)
-				{
-					areAllDigits = std::isdigit(buffer[i]);
+				std::cout << "FileIterationHelper::IterateCallsFile() cannot open file: " << Constants::FilePaths::FILE_PATH_CALLS << "\n";
+				return;
+			}
 
-					if (!areAllDigits)
-					{
-						return areAllDigits;
-					}
+			while (!fileManager.eof())
+			{
+				if (fileManager.peek() != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+				{
+					std::shared_ptr<IData> callObject = std::make_shared<Call>();
+					dataExtraction->ProcessDataExtraction(callObject, Constants::NextItemOffsets::NEXT_ITEM_OFFSET_CALLS);
+					dataControl.AddDataEntry(callObject);
+
+					indexOffset += Constants::NextItemOffsets::NEXT_ITEM_OFFSET_CALLS;
+					fileManager.seekg(indexOffset, std::ios::beg);
+				}
+				else
+				{
+					fileManager.close();
+					break;
+				}
+			}
+		}
+
+		void FileIterationHelper::IteratePhonebookFiles(DataControl& dataControl)
+		{
+			std::ifstream fileManager(Constants::FilePaths::FILE_PATH_PHONEBOOK_MAIN, std::ios::in | std::ios::binary);
+			std::unique_ptr<IDataExtraction> dataExtraction = std::make_unique<PhonebookMainDataExtraction>(Constants::FilePaths::FILE_PATH_CALLS);
+			int indexOffset = 0;
+
+			while (!fileManager.eof())
+			{
+				if (fileManager.peek() != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+				{
+					std::shared_ptr<IData> phonebookObject = std::make_shared<Phonebook>();
+					dataExtraction->ProcessDataExtraction(phonebookObject, indexOffset);
+					mLocalPhonebookEntries.push_back(phonebookObject);
+
+					indexOffset += Constants::NextItemOffsets::NEXT_ITEM_OFFSET_PHONEBOOK_MAIN;
+					fileManager.seekg(indexOffset, std::ios::beg);
+				}
+				else
+				{
+					fileManager.close();
+					break;
 				}
 			}
 
-			return areAllDigits;
-		}
+			fileManager.open(Constants::FilePaths::FILE_PATH_PHONEBOOK_MAIN, std::ios::in | std::ios::binary);
+			dataExtraction = std::make_unique<PhonebookDetailsDataExtraction>(Constants::FilePaths::FILE_PATH_CALLS);
+			indexOffset = 0;
+			const int localPhonebookEntriesSize = mLocalPhonebookEntries.size();
 
-		bool HelperClass::AreAllCharactersAlphas(const char* buffer, const int bufferSize)
-		{
-			bool areAllAlphas = false;
-
-			for (int i = 0; i < bufferSize; ++i)
+			for (int phonebookEntriesIndex = 0; phonebookEntriesIndex < localPhonebookEntriesSize; ++phonebookEntriesIndex)
 			{
-				if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING && buffer[i] != buffer[i] != Utils::Constants::Decoding::Tokens::SPACE_TOKEN)
-				{
-					areAllAlphas = std::isalpha(buffer[i]);
+				std::shared_ptr<Phonebook> phonebookObject = std::dynamic_pointer_cast<Phonebook>(mLocalPhonebookEntries.at(phonebookEntriesIndex));
 
-					if (!areAllAlphas)
-					{
-						return areAllAlphas;
-					}
+				if (phonebookObject != nullptr)
+				{
+					dataExtraction->ProcessDataExtraction(phonebookObject, indexOffset);
+					SanitizeManager& instance = SanitizeManager::GetInstance();
+					bool isDataSanitized = instance.IsDataSanitized(phonebookObject);
+					phonebookObject->SetIsDeleted(!isDataSanitized);
+					dataControl.AddDataEntry(phonebookObject);
+					indexOffset += Constants::NextItemOffsets::NEXT_ITEM_OFFSET_PHONEBOOK_DETAILS;
+					fileManager.seekg(indexOffset, std::ios::beg);
 				}
 			}
 
-			return areAllAlphas;
-		}
-
-		bool HelperClass::IsEmailValid(const char* buffer, const int bufferSize)
-		{
-			const char* result = std::strchr(buffer, Utils::Constants::Decoding::Tokens::AT_TOKEN);
-			return result != nullptr;
-		}
-
-		bool HelperClass::IsDataSanitized(const char* buffer, const int bufferSize)
-		{
-			bool isDataSanitized = false;
-
-			for (int i = 0; i < bufferSize; ++i)
-			{
-				if (std::isalpha(buffer[i]) || std::isdigit(buffer[i]))
-				{
-					isDataSanitized = true;
-					return isDataSanitized;
-				}
-			}
-
-			return isDataSanitized;
-		}
-		
-		bool HelperClass::HasDataBeenDeletedFromDetails(const Phonebook& data)
-		{
-			bool retVal = true;
-
-			retVal &= IsDataSanitized(data.GetFaxNumber().c_str(), data.GetFaxNumber().length());
-			retVal &= IsDataSanitized(data.GetHomeNumber().c_str(), data.GetHomeNumber().length());
-			retVal &= IsDataSanitized(data.GetWorkNumber().c_str(), data.GetWorkNumber().length());
-
-			retVal &= IsDataSanitized(data.GetEmail().c_str(), data.GetWorkNumber().length());
-			retVal &= IsDataSanitized(data.GetOrganization().c_str(), data.GetOrganization().length());
-
-			return retVal;
+			fileManager.close();
 		}
 	}
 }

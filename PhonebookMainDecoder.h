@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_MAIN_DECODER_H
 #define PHONEBOOK_MAIN_DECODER_H
 
-#include "Phonebook.h"
+/*#include "Phonebook.h"
 
 class PhonebookMainDecoder
 {
@@ -12,6 +12,6 @@ public:
 
 private:
 	std::string mFilePath;
-};
+};*/
 
 #endif // !PHONEBOOK_MAIN_DECODER_H

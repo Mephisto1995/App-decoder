@@ -160,11 +160,4 @@ void PhonebookDetailsDecoder::DecodeData(Phonebook& outputObject, const int next
 
 		fileManager.seekg(RESET_FILE_POINTER, std::ios::beg);
 	}
-
-	// Sanitize the data to find out if we have garbage or not.
-	// If we have garbage in all of them, it means the data has been deleted.
-	{
-		bool isDataSanitized = Utils::Helpers::HelperClass::HasDataBeenDeletedFromDetails(outputObject);
-		outputObject.SetIsDeleted(isDataSanitized);
-	}
 }

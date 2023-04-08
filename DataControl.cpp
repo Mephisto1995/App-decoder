@@ -1,26 +1,10 @@
 #include "DataControl.h"
 
 DataControl::DataControl() :
-	mCallData()
-	, mPhonebookData()
+	mDataEntry()
 {}
 
-void DataControl::AddCallData(const Call& call)
+void DataControl::AddDataEntry(const std::shared_ptr<IData>& data)
 {
-	mCallData.push_back(call);
-}
-
-void DataControl::AddPhonebookData(const Phonebook& phonebook)
-{
-	mPhonebookData.push_back(phonebook);
-}
-
-Phonebook& DataControl::GetPhonebookAt(const int index)
-{
-	return mPhonebookData.at(index);
-}
-
-const int DataControl::GetPhonebookSize() const
-{
-	return mPhonebookData.size();
+	mDataEntry.push_back(data);
 }
