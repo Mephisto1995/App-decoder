@@ -38,7 +38,7 @@ void PhonebookDetailsDataExtraction::ProcessDataExtraction(std::shared_ptr<IData
 
 void PhonebookDetailsDataExtraction::ExtractHomeNumber(std::shared_ptr<Phonebook>& phonebookObject, const int nextItemOffset)
 {
-	mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_HOME_PHONE_NUMBER + nextItemOffset, std::ios::beg);
+	mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_HOME_PHONE_NUMBER + nextItemOffset, std::ios::beg);
 	const size_t bufferSize = 14;
 	char buffer[bufferSize];
 	char cleanBuffer[bufferSize + 1];
@@ -51,23 +51,23 @@ void PhonebookDetailsDataExtraction::ExtractHomeNumber(std::shared_ptr<Phonebook
 	{
 		for (int i = 0; i < bufferSize; ++i)
 		{
-			if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+			if (buffer[i] != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
 			{
 				cleanBuffer[j++] = buffer[i];
 			}
 		}
 
-		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
+		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
 		std::string outputString(cleanBuffer);
 		phonebookObject->SetHomeNumber(outputString);
 	}
 
-	mFileHandler.seekg(Utils::Constants::RESET_FILE_POINTER, std::ios::beg);
+	mFileHandler.seekg(Constants::RESET_FILE_POINTER, std::ios::beg);
 }
 
 void PhonebookDetailsDataExtraction::ExtractOrganization(std::shared_ptr<Phonebook>& phonebookObject, const int nextItemOffset)
 {
-	mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_ORGANIZATION + nextItemOffset, std::ios::beg);
+	mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_ORGANIZATION + nextItemOffset, std::ios::beg);
 	const size_t bufferSize = 19;
 	char buffer[bufferSize];
 	char cleanBuffer[bufferSize + 1];
@@ -80,23 +80,23 @@ void PhonebookDetailsDataExtraction::ExtractOrganization(std::shared_ptr<Phonebo
 	{
 		for (int i = 0; i < bufferSize; ++i)
 		{
-			if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+			if (buffer[i] != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
 			{
 				cleanBuffer[j++] = buffer[i];
 			}
 		}
 
-		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
+		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
 		std::string outputString(cleanBuffer);
 		phonebookObject->SetOrganization(outputString);
 	}
 
-	mFileHandler.seekg(Utils::Constants::RESET_FILE_POINTER, std::ios::beg);
+	mFileHandler.seekg(Constants::RESET_FILE_POINTER, std::ios::beg);
 }
 
 void PhonebookDetailsDataExtraction::ExtractEmail(std::shared_ptr<Phonebook>& phonebookObject, const int nextItemOffset)
 {
-	mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_EMAIL + nextItemOffset, std::ios::beg);
+	mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_EMAIL + nextItemOffset, std::ios::beg);
 	const size_t bufferSize = 17;
 	char buffer[bufferSize];
 	char cleanBuffer[bufferSize + 1];
@@ -109,23 +109,23 @@ void PhonebookDetailsDataExtraction::ExtractEmail(std::shared_ptr<Phonebook>& ph
 	{
 		for (int i = 0; i < bufferSize; ++i)
 		{
-			if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+			if (buffer[i] != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
 			{
 				cleanBuffer[j++] = buffer[i];
 			}
 		}
 
-		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
+		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
 		std::string outputString(cleanBuffer);
 		phonebookObject->SetEmail(outputString);
 	}
 
-	mFileHandler.seekg(Utils::Constants::RESET_FILE_POINTER, std::ios::beg);
+	mFileHandler.seekg(Constants::RESET_FILE_POINTER, std::ios::beg);
 }
 
 void PhonebookDetailsDataExtraction::ExtractWorkPhone(std::shared_ptr<Phonebook>& phonebookObject, const int nextItemOffset)
 {
-	mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_WORK_PHONE_NUMBER + nextItemOffset, std::ios::beg);
+	mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_WORK_PHONE_NUMBER + nextItemOffset, std::ios::beg);
 	const size_t bufferSize = 8;
 	char buffer[bufferSize];
 	char cleanBuffer[bufferSize + 1];
@@ -138,23 +138,23 @@ void PhonebookDetailsDataExtraction::ExtractWorkPhone(std::shared_ptr<Phonebook>
 	{
 		for (int i = 0; i < bufferSize; ++i)
 		{
-			if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+			if (buffer[i] != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
 			{
 				cleanBuffer[j++] = buffer[i];
 			}
 		}
 
-		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
+		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
 		std::string outputString(cleanBuffer);
 		phonebookObject->SetWorkNumber(outputString);
 	}
 
-	mFileHandler.seekg(Utils::Constants::RESET_FILE_POINTER, std::ios::beg);
+	mFileHandler.seekg(Constants::RESET_FILE_POINTER, std::ios::beg);
 }
 
 void PhonebookDetailsDataExtraction::ExtractFax(std::shared_ptr<Phonebook>& phonebookObject, const int nextItemOffset)
 {
-	mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_FAX + nextItemOffset, std::ios::beg);
+	mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_FAX + nextItemOffset, std::ios::beg);
 	const size_t bufferSize = 14;
 	char buffer[bufferSize];
 	char cleanBuffer[bufferSize + 1];
@@ -167,16 +167,16 @@ void PhonebookDetailsDataExtraction::ExtractFax(std::shared_ptr<Phonebook>& phon
 	{
 		for (int i = 0; i < bufferSize; ++i)
 		{
-			if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+			if (buffer[i] != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
 			{
 				cleanBuffer[j++] = buffer[i];
 			}
 		}
 
-		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
+		cleanBuffer[((sizeof(buffer) == 0) ? 0 : bufferSize)] = Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
 		std::string outputString(cleanBuffer);
 		phonebookObject->SetFaxNumber(outputString);
 	}
 
-	mFileHandler.seekg(Utils::Constants::RESET_FILE_POINTER, std::ios::beg);
+	mFileHandler.seekg(Constants::RESET_FILE_POINTER, std::ios::beg);
 }

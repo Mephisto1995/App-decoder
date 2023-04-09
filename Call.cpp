@@ -1,7 +1,7 @@
 #include "Call.h"
 
 Call::Call() :
-	mId(Utils::Helpers::HelperClass::GenerateRandomIds())
+	mId(HelperClass::GenerateRandomIds())
 	, mCallType(Enums::CALL_TYPE_INVALID)
 	, mTelFrom(Constants::Defaults::DEF_STRING_VAL)
 	, mTelTo(Constants::Defaults::DEF_STRING_VAL)
@@ -69,7 +69,7 @@ Call& Call::operator=(Call&& other) noexcept
 }
 
 int Call::GetId() const { return mId; }
-Utils::Enums::ECallType Call::GetCallType() const { return mCallType; }
+Enums::ECallType Call::GetCallType() const { return mCallType; }
 std::string Call::GetTelFrom() const { return mTelFrom; }
 std::string Call::GetTelTo() const { return mTelTo; }
 std::string Call::GetSim() const { return mSim; }
@@ -77,7 +77,7 @@ std::string Call::GetDateInfoData() const { return mDateInfoData; }
 std::string Call::GetDuration() const { return mDuration; }
 
 void Call::SetId(const int id) { mId = id; }
-void Call::SetCallType(const Utils::Enums::ECallType callType) { mCallType = callType; }
+void Call::SetCallType(const Enums::ECallType callType) { mCallType = callType; }
 void Call::SetTelFrom(const std::string& telFrom) { mTelFrom = telFrom; }
 void Call::SetTelTo(const std::string& telTo) { mTelTo = telTo; }
 void Call::SetSim(const std::string& sim) { mSim = sim; }

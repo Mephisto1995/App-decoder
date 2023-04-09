@@ -24,22 +24,7 @@
     <ClCompile Include="Call.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CallDecoder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DataControl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PhonebookMainDecoder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PhonebookDetailsDecoder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DataExtraction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SanitizeManager.cpp">
@@ -52,6 +37,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PhonebookDetailsDataExtraction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIterationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,25 +67,13 @@
     <ClInclude Include="Call.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CallDecoder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DataControl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PhonebookMainDecoder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PhonebookDetailsDecoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IDataExtraction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DataExtraction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SanitizeManager.h">
@@ -113,6 +92,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIterationHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

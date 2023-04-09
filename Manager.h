@@ -28,30 +28,6 @@ namespace Utils
 {
 	namespace Helpers
 	{
-		class HelperClass
-		{
-		public:
-			static bool AreAllCharactersAlphas(const char* buffer, const int bufferSize);
-			/*static bool AreAllCharactersDigits(const char* buffer, const int bufferSize);
-			static bool IsEmailValid(const char* buffer, const int bufferSize);
-			static bool HasDataBeenDeletedFromDetails(const Phonebook& data);
-			static bool IsDataSanitized(const char* buffer, const int bufferSize);*/
-
-			static int GenerateRandomIds();
-
-			static void InitApp();
-		};
-
-		class FileIterationHelper
-		{
-		public:
-			static void IterateCallsFile(DataControl& dataControl);
-			static void IteratePhonebookFiles(DataControl& dataControl);
-
-		private:
-			static std::vector<std::shared_ptr<IData>> mLocalPhonebookEntries;
-		};
-
 		class BufferContainerExtractionLogicHelper
 		{
 		public:

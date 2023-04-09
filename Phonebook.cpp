@@ -1,7 +1,7 @@
 #include "Phonebook.h"
 
 Phonebook::Phonebook() :
-	mId(Utils::Helpers::HelperClass::GenerateRandomIds())
+	mId(HelperClass::GenerateRandomIds())
 	, mIsDeleted(Constants::Defaults::DEF_BOOL_VAL)
 	, mName(Constants::Defaults::DEF_STRING_VAL)
 	, mTelNumber(Constants::Defaults::DEF_STRING_VAL)

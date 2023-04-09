@@ -1,10 +1,12 @@
 #ifndef CALL_H
 #define CALL_H
 
+#include <string>
+
 #include "Constants.h"
 #include "Enums.h";
+#include "HelperClass.h"
 #include "IData.h"
-#include <string>
 
 class Call : public IData
 {

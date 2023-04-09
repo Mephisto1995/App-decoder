@@ -129,15 +129,12 @@
   <ItemGroup>
     <ClCompile Include="Call.cpp" />
     <ClCompile Include="CallDataExtraction.cpp" />
-    <ClCompile Include="CallDecoder.cpp" />
     <ClCompile Include="DataControl.cpp" />
-    <ClCompile Include="DataExtraction.cpp" />
-    <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="FileIterationHelper.cpp" />
+    <ClCompile Include="HelperClass.cpp" />
     <ClCompile Include="Phonebook.cpp" />
     <ClCompile Include="PhonebookDetailsDataExtraction.cpp" />
-    <ClCompile Include="PhonebookDetailsDecoder.cpp" />
     <ClCompile Include="PhonebookMainDataExtraction.cpp" />
-    <ClCompile Include="PhonebookMainDecoder.cpp" />
     <ClCompile Include="SanitizeManager.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -149,19 +146,17 @@
   <ItemGroup>
     <ClInclude Include="Call.h" />
     <ClInclude Include="CallDataExtraction.h" />
-    <ClInclude Include="CallDecoder.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DataControl.h" />
-    <ClInclude Include="DataExtraction.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="FileIterationHelper.h" />
+    <ClInclude Include="HelperClass.h" />
     <ClInclude Include="IData.h" />
     <ClInclude Include="IDataExtraction.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Phonebook.h" />
     <ClInclude Include="PhonebookDetailsDataExtraction.h" />
-    <ClInclude Include="PhonebookDetailsDecoder.h" />
     <ClInclude Include="PhonebookMainDataExtraction.h" />
-    <ClInclude Include="PhonebookMainDecoder.h" />
     <ClInclude Include="SanitizeManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

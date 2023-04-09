@@ -1,8 +1,8 @@
-#include "Manager.h"
+#include "HelperClass.h"
 
 void main()
 {
-    Utils::Helpers::HelperClass::InitApp();
+    HelperClass::InitApp();
 }
 
 /*void main()

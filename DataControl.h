@@ -2,6 +2,8 @@
 #define DATA_CONTROL_H
 
 #include <memory>
+#include <vector>
+
 #include "IData.h"
 
 class DataControl

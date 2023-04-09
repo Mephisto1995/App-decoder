@@ -1,9 +1,12 @@
 #ifndef PHONEBOOK_H
 #define PHONEBOOK_H
 
-#include "Constants.h"
-#include "IData.h"
 #include <string>
+
+#include "Constants.h"
+#include "HelperClass.h"
+#include "IData.h"
+
 
 class Phonebook : public IData
 {

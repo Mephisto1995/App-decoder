@@ -8,6 +8,10 @@
 #include "Enums.h"
 #include "IDataExtraction.h"
 
+#include "Call.h"
+
+#pragma warning(disable:4996)
+
 class Call;
 
 class CallDataExtraction : public IDataExtraction

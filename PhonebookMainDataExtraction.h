@@ -1,7 +1,11 @@
 #ifndef PHONEBOOK_MAIN_DATA_EXTRACTION_H
 #define PHONEBOOK_MAIN_DATA_EXTRACTION_H
 
+#include <iostream>
+#include <fstream>
+
 #include "IDataExtraction.h"
+#include "Phonebook.h"
 
 class Phonebook;
 

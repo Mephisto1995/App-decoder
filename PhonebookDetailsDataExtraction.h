@@ -1,9 +1,13 @@
 #ifndef PHONEBOOK_DETAILS_DATA_EXTRACTION_H
 #define PHONEBOOK_DETAILS_DATA_EXTRACTION_H
 
-#include "Manager.h"
+#include <iostream>
+#include <fstream>
+
 #include "IDataExtraction.h"
 #include "SanitizeManager.h"
+
+#include "Phonebook.h"
 
 class Phonebook;
 

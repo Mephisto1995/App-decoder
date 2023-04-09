@@ -35,7 +35,7 @@ void PhonebookMainDataExtraction::ProcessDataExtraction(std::shared_ptr<IData> o
 
 void PhonebookMainDataExtraction::ExtractPhonebookNameEntry(std::shared_ptr<Phonebook>& phonebookObject, const int nextItemOffset)
 {
-	mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_NAME + nextItemOffset, std::ios::beg);
+	mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_NAME + nextItemOffset, std::ios::beg);
 	const size_t bufferSize = 15;
 	char buffer[bufferSize];
 	char cleanBuffer[bufferSize + 1];
@@ -50,31 +50,31 @@ void PhonebookMainDataExtraction::ExtractPhonebookNameEntry(std::shared_ptr<Phon
 	{
 		for (int i = 0; i < bufferSize; ++i)
 		{
-			if (buffer[i] != Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+			if (buffer[i] != Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
 			{
 				cleanBuffer[j++] = buffer[i];
 			}
 		}
 
-		cleanBuffer[bufferSize] = Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
+		cleanBuffer[bufferSize] = Constants::Decoding::Tokens::NULL_TERMINATED_STRING;
 
 		std::string outputString(cleanBuffer);
 		phonebookObject->SetName(outputString);
 	}
 
-	mFileHandler.seekg(Utils::Constants::RESET_FILE_POINTER, std::ios::beg);
+	mFileHandler.seekg(Constants::RESET_FILE_POINTER, std::ios::beg);
 }
 
 void PhonebookMainDataExtraction::ExtractTelNumber(std::shared_ptr<Phonebook>& phonebookObject, const int nextItemOffset)
 {
-	mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_TEL + nextItemOffset, std::ios::beg);
+	mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_TEL + nextItemOffset, std::ios::beg);
 
 	// Check if first bit is Null Terminated String token.
 	char byte = mFileHandler.peek();
-	if (byte == Utils::Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
+	if (byte == Constants::Decoding::Tokens::NULL_TERMINATED_STRING)
 	{
 		// Go to the next bit.
-		mFileHandler.seekg(Utils::Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_TEL + nextItemOffset + 1, std::ios::beg);
+		mFileHandler.seekg(Constants::Decoding::Phonebook::STARTING_BYTE_OFFSET_TEL + nextItemOffset + 1, std::ios::beg);
 	}
 
 	const size_t bufferSize = 14;
@@ -90,5 +90,5 @@ void PhonebookMainDataExtraction::ExtractTelNumber(std::shared_ptr<Phonebook>& p
 		phonebookObject->SetTelNumber(outputString);
 	}
 
-	mFileHandler.seekg(Utils::Constants::RESET_FILE_POINTER, std::ios::beg);
+	mFileHandler.seekg(Constants::RESET_FILE_POINTER, std::ios::beg);
 }
