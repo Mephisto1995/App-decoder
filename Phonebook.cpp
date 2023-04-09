@@ -1,20 +1,22 @@
 #include "Phonebook.h"
 
 Phonebook::Phonebook() :
-	mIsDeleted(Utils::Constants::DEF_BOOL_VAL)
-	, mName(Utils::Constants::DEF_STRING_VAL)
-	, mTelNumber(Utils::Constants::DEF_STRING_VAL)
-	, mFaxNumber(Utils::Constants::DEF_STRING_VAL)
-	, mHomeNumber(Utils::Constants::DEF_STRING_VAL)
-	, mWorkNumber(Utils::Constants::DEF_STRING_VAL)
-	, mEmail(Utils::Constants::DEF_STRING_VAL)
-	, mOrganization(Utils::Constants::DEF_STRING_VAL)
+	mId(HelperClass::GenerateRandomIds())
+	, mIsDeleted(Constants::Defaults::DEF_BOOL_VAL)
+	, mName(Constants::Defaults::DEF_STRING_VAL)
+	, mTelNumber(Constants::Defaults::DEF_STRING_VAL)
+	, mFaxNumber(Constants::Defaults::DEF_STRING_VAL)
+	, mHomeNumber(Constants::Defaults::DEF_STRING_VAL)
+	, mWorkNumber(Constants::Defaults::DEF_STRING_VAL)
+	, mEmail(Constants::Defaults::DEF_STRING_VAL)
+	, mOrganization(Constants::Defaults::DEF_STRING_VAL)
 {}
 
 Phonebook::~Phonebook() {}
 
 Phonebook::Phonebook(const Phonebook& other) :
-	mIsDeleted(other.mIsDeleted)
+	mId(other.mId)
+	, mIsDeleted(other.mIsDeleted)
 	, mName(other.mName)
 	, mTelNumber(other.mTelNumber)
 	, mFaxNumber(other.mFaxNumber)
@@ -25,7 +27,8 @@ Phonebook::Phonebook(const Phonebook& other) :
 {}
 
 Phonebook::Phonebook(Phonebook&& other) noexcept :
-	mIsDeleted(std::move(other.mIsDeleted))
+	mId(std::move(other.mId))
+	, mIsDeleted(std::move(other.mIsDeleted))
 	, mName(std::move(other.mName))
 	, mTelNumber(std::move(other.mTelNumber))
 	, mFaxNumber(std::move(other.mFaxNumber))
@@ -42,6 +45,7 @@ Phonebook& Phonebook::operator=(const Phonebook& other)
 		return *this;
 	}
 
+	mId = other.mId;
 	mIsDeleted = other.mIsDeleted;
 	mName = other.mName;
 	mTelNumber = other.mTelNumber;
@@ -61,6 +65,7 @@ Phonebook& Phonebook::operator=(Phonebook&& other) noexcept
 		return *this;
 	}
 
+	mId = std::move(other.mId);
 	mIsDeleted = std::move(other.mIsDeleted);
 	mName = std::move(other.mName);
 	mTelNumber = std::move(other.mTelNumber);
@@ -73,6 +78,7 @@ Phonebook& Phonebook::operator=(Phonebook&& other) noexcept
 	return *this;
 }
 
+int Phonebook::GetId() const { return mId; }
 bool Phonebook::GetIsDeleted() const { return mIsDeleted; }
 std::string Phonebook::GetName() const { return mName; }
 std::string Phonebook::GetTelNumber() const { return mTelNumber; }
@@ -82,6 +88,7 @@ std::string Phonebook::GetWorkNumber() const { return mWorkNumber; }
 std::string Phonebook::GetEmail() const { return mEmail; }
 std::string Phonebook::GetOrganization() const { return mOrganization; }
 
+void Phonebook::SetId(const int id) { mId = id; }
 void Phonebook::SetIsDeleted(const bool isDeleted) { mIsDeleted = isDeleted; }
 void Phonebook::SetName(const std::string& name) { mName = name; }
 void Phonebook::SetTelNumber(const std::string& telNumber) { mTelNumber = telNumber; }
